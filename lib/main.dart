@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import "dart:math";
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
@@ -19,8 +19,23 @@ class BallPage extends StatefulWidget {
 }
 
 class _BallPageState extends State<BallPage> {
+  int decision = 1;
+  void decied () {
+    setState(() {
+      decision = 1 + Random().nextInt(5);
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Container(
+        child: FlatButton(
+          onPressed: (){
+            decied();
+          },
+          child: Image.asset("images/ball$decision.png"),
+        ),
+      ),
+    );
   }
 }
